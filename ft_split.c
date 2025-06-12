@@ -57,13 +57,13 @@ static int	count_end_find(const char *s, char c, int index_word)
 {
 	int	i;
 
-	i = count_start_find(s, c, index_word); // kelimenin başlangıç index'i
+	i = count_start_find(s, c, index_word);
 
 	if (i == -1)
-		return -1; // kelime yoksa -1 döndür
+		return (-1);
 	while (s[i] && s[i] != c)
-		i++; // kelimenin sonuna kadar git
-	return (i); // kelimenin bittiği index (ayraç ya da \0)
+		i++;
+	return (i);
 }
 
 static void	free_split(char **split, int i)
@@ -80,6 +80,8 @@ char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		word_count;
+	int		start;
+	int		end;
 	char	**split;
 
 	if (!s)
@@ -91,20 +93,19 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (i < word_count)
 	{
-		int start = count_start_find(s, c, i);
-		int end = count_end_find(s, c, i);
+		start = count_start_find(s, c, i);
+		end = count_end_find(s, c, i);
 		split[i] = ft_substr(s, start, end - start);
 		if (!split[i])
 		{
 			free_split(split, i - 1);
-			return (NULL); // memory allocation error
+			return (NULL);
 		}
 		i++;
 	}
 	split[i] = NULL;
 	return (split);
 }
-
 
 /*char	**ft_split(char const *s, char c)
 {
@@ -116,7 +117,8 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while(count_word(s, c) > i)
 	{
-		*str[i] = ft_substr(s, count_start_find(s, c, i), count_end_find(s, c, i) - count_start_find(s, c, i));
+		*str[i] = ft_substr(s, count_start_find(s, c, i), 
+		count_end_find(s, c, i) - count_start_find(s, c, i));
 		i++;
 	}
 	return(str);
