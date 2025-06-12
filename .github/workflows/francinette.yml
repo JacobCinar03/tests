@@ -24,6 +24,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y git build-essential python3 python3-pip
 
+      # BURASI OPSIYONEL MAKEFILE'IN VARLIĞI VE İÇERİĞİNE BAĞLI
+      - name: Run Makefile
+        run: |
+          make fclean
+          make
+          make clean
+
       # 3. Python paketlerini yükle: gitpython, halo, toml ve norminette
       #    - gitpython, halo, toml: Francinette’in çalışması için
       #    - norminette: 42 School stil kontrol aracı
@@ -32,20 +39,23 @@ jobs:
           pip3 install --upgrade pip setuptools
           pip3 install gitpython halo toml norminette
 
-      # 4. Eğer pip norminette’i ~/.local/bin içine yüklediyse, bu klasörü PATH’e ekle
+      # 4. Eğer pip norminette’i ~/.local
       #    (GitHub Actions ortamında ~/.local/bin, varsayılan olarak PATH’te olmayabilir)
       - name: Add pip local bin to PATH
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      # 5. Francinette deposunu proje dizininin dışına, /tmp/francinette içine klonla
-      #    Böylece proje ve tester dosyaları karışıp "max recursion" hatası oluşmaz.
+      # 5. Francinette
       - name: Clone francinette outside workspace
         run: |
-          git clone https://github.com/xicodomingues/francinette.git /tmp/francinette
+          bash -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)"
 
-      # 6. Çalışma dizinini repo köküne (github.workspace) ayarla ve Francinette’i çalıştır
-      #    Bu sayede “Use francinette or paco inside a project folder to run it” kuralına uyuyoruz.
+      # 5.1 Add Francinette bin to PATH
+      - name: Add Francinette bin to PATH
+        run: echo "$HOME/francinette" >> $GITHUB_PATH
+
+      # 6. Çalışma dizinini repo köküne (github.workspace) ayarla ve Francinette'i çalıştır
+      #    Bu sayede "Use francinette or paco inside a project folder to run it" kuralına uyuyoruz.
       - name: Run francinette tests
         working-directory: ${{ github.workspace }}
         run: |
-          python3 /tmp/francinette/main.py
+          $HOME/francinette/tester.sh
