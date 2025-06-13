@@ -31,13 +31,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	char bilim[] = "iskender-parasi";
-	char beyza[] = "motivasyon-eksikligi";
-
-	printf("%s\n", ft_strrchr(bilim,97));
-	printf("%s\n", bilim);
-}
-*/

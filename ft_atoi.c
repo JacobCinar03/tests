@@ -36,13 +36,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
-
-/*
-int	main(void)
-{
-	char yakup[]= "   7523  ";
-	printf("%d\n", ft_atoi(yakup));
-	printf("%d\n", atoi(yakup));
-}
-*/
-//Bu atoi mandakinden farklı mandaki long olan sayıları da yazdırıyor bu yazdırmuyır.

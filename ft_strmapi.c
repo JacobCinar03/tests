@@ -17,6 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 	size_t	len;
 	char	*result;
+
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
@@ -32,21 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	result[i] = '\0';
 	return (result);
 }
-/*
-static char function(unsigned int i, char c)
-{
-    unsigned char result;
-
-    result = (unsigned char)c + i;
-    return (char)(result) % 127;
-}
-
-int main()
-{
-    char abi[] = "aaaaa"; 
-    printf("%s\n", ft_strmapi(abi, function));
-
-    return 0;
-}
-*/
-//Sorun şu static function strmapinin içinde değil ne yapılmalı onu ayrı tutup main de mi çağırmalı başka bir yol mu bulmalı.

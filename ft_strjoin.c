@@ -37,29 +37,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dst[j] = '\0';
 	return (dst);
 }
-
-/* Bu da oluyor ama line sıkıntı.
-	i = 0;
-	while (i < len1)
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (j < len2)
-	{
-		dst[i + j] = s2[j];
-		j++;
-	}
-	dst[i + j] = '\0';
-*/
-
-/*
-int main(void)
-{
-	char pre[] = "naber ";
-	char suf[] = "müdür.";
-	
-	printf("%s\n", ft_strjoin(pre, suf));
-}
-*/

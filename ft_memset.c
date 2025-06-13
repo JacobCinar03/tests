@@ -26,18 +26,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-/*
-int main(void)
-{
-	int arr[] = {7200, 5 , 1};
-	ft_memset(arr, 127, 4);
-	ft_memset(arr, 255, 3);
-
-
-
-	
-	
-	printf("%d\n%d\n%d\n", arr[0] ,arr[1] ,arr[2]);
-	
-}
-*/

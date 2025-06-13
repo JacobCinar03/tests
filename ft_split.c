@@ -58,7 +58,6 @@ static int	count_end_find(const char *s, char c, int index_word)
 	int	i;
 
 	i = count_start_find(s, c, index_word);
-
 	if (i == -1)
 		return (-1);
 	while (s[i] && s[i] != c)

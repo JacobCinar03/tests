@@ -53,13 +53,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	p[i] = '\0';
 	return (p);
 }
-
-/*
-int	main(void)
-{
-	char	s1[] = "---fatih--sinan---";
-	char	set[] = "-";
-
-	printf("%s\n", ft_strtrim(s1, set));
-}
-*/

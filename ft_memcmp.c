@@ -29,19 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-/*
-int main(void)
-{
-	char q1[] = "asdfghjewrwerke";
-	char q2[] = "asdfghjewwwekq";
-
-	printf("%d\n", ft_strncmp(q1, q2, 20));
-
-
-	printf("\n adres \n");
-	printf("%d\n",ft_memcmp(q1, q2, 20));
-	printf("...%p... -- q1 \n", q1);
-	printf("...%p... -- q2 \n", q2);
-}
-*/

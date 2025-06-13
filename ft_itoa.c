@@ -73,13 +73,3 @@ char	*ft_itoa(int n)
 		return (NULL);
 	return (result_giver(result, n2, sign, index));
 }
-/*
-int main()
-{
-    printf("%s\n", ft_itoa(421));
-    printf("%s\n", ft_itoa(-421));
-    printf("%s\n", ft_itoa(0));
-    printf("%s\n", ft_itoa(-2147483648));
-    printf("%s\n", ft_itoa(2147483647));
-}
-*/

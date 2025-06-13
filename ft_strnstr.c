@@ -14,37 +14,26 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*temp_big;
-	char	*temp_little;
+	char	*temp_b;
+	char	*temp_l;
 	size_t	i;
 	size_t	j;
 
 	if (*little == '\0')
 		return ((char *)big);
 	i = 0;
-	temp_big = (char *)big;
-	temp_little = (char *)little;
-	while (temp_big[i] && i < len)
+	temp_b = (char *)big;
+	temp_l = (char *)little;
+	while (temp_b[i] && i < len)
 	{
 		j = 0;
-		while (temp_big[i + j] == temp_little[j] && (i + j) < len && temp_little[j] != '\0')
+		while (temp_b[i + j] == temp_l[j] && (i + j) < len && temp_l[j] != '\0')
 		{
 			j++;
 		}
-		if (temp_little[j] == '\0')
-			return (temp_big + i);
+		if (temp_l[j] == '\0')
+			return (temp_b + i);
 		i++;
 	}
 	return (NULL);
 }
-
-
-/*
-int	main(void)
-{
-	char	a1[] = "corba var mi beyler";
-	char	a2[] = "cx";
-
-	printf("%s", ft_strnstr(a1, a2, 20));
-}
-*/
