@@ -33,8 +33,8 @@ static char	*result_giver(char *result, int n2, int sign, int len)
 	i = 0;
 	if (sign == 1)
 		result[i] = '-';
-	num = power(10, index - 1);
-	while (i < index)
+	num = power(10, len - 1);
+	while (i < len)
 	{
 		result[i + sign] = (n2 / num) % 10 + '0';
 		num /= 10;
@@ -63,40 +63,10 @@ char	*ft_itoa(int n)
 	}
 	n2 = n;
 	len = 0;
-	while (n > 0)
-	{
+	while (n > 0 && len++)
 		n = n / 10;
-		len++;
-	}
 	result = (char *)malloc(sizeof(char) * (len + sign + 1));
 	if (!result)
 		return (NULL);
 	return (result_giver(result, n2, sign, len));
-}
-
-char	*ft_itoa(int n)
-{
-	char	*res;
-	int		tmp;
-	int		sign;
-	int		len;
-
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return (ft_strdup("0"));
-	sign = 0;
-	if (n < 0)
-	{
-		sign = 1;
-		n *= -1;
-	}
-	tmp = n;
-	len = 0;
-	while (tmp > 0 && len++)
-		tmp /= 10;
-	res = (char *)malloc(sizeof(char) * (len + sign + 1));
-	if (!res)
-		return (NULL);
-	return (result_giver(res, n, sign, len));
 }
