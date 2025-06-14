@@ -14,17 +14,17 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!lst && !f && !del)
-		return (NULL);
 	t_list	*new_o;
 	t_list	*new_lst;
 	void	*n_content;
 
+	if (!lst && !f && !del)
+		return (NULL);
 	new_lst = NULL;
 	while (lst)
 	{
-		n_content = f(lst->content); // lst content f den n'ye aktarılır.
-		new_o = ft_lstnew(n_content); // yeni liste başlatılır ilk elde edilen değerle
+		n_content = f(lst->content);
+		new_o = ft_lstnew(n_content);
 		if (!new_o)
 		{
 			ft_lstclear(&new_lst, del);
