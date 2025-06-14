@@ -25,7 +25,7 @@ static int	power(int base, int exp)
 	return (result);
 }
 
-static char	*result_giver(char *result, int n2, int sign, int index)
+static char	*result_giver(char *result, int n2, int sign, int len)
 {
 	int	i;
 	int	num;
@@ -49,7 +49,7 @@ char	*ft_itoa(int n)
 	char	*result;
 	int		n2;
 	int		sign;
-	int		index;
+	int		len;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
@@ -62,14 +62,41 @@ char	*ft_itoa(int n)
 		n *= -1;
 	}
 	n2 = n;
-	index = 0;
+	len = 0;
 	while (n > 0)
 	{
 		n = n / 10;
-		index++;
+		len++;
 	}
-	result = (char *)malloc(sizeof(char) * (index + sign + 1));
+	result = (char *)malloc(sizeof(char) * (len + sign + 1));
 	if (!result)
 		return (NULL);
-	return (result_giver(result, n2, sign, index));
+	return (result_giver(result, n2, sign, len));
+}
+
+char	*ft_itoa(int n)
+{
+	char	*res;
+	int		tmp;
+	int		sign;
+	int		len;
+
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_strdup("0"));
+	sign = 0;
+	if (n < 0)
+	{
+		sign = 1;
+		n *= -1;
+	}
+	tmp = n;
+	len = 0;
+	while (tmp > 0 && len++)
+		tmp /= 10;
+	res = (char *)malloc(sizeof(char) * (len + sign + 1));
+	if (!res)
+		return (NULL);
+	return (result_giver(res, n, sign, len));
 }
