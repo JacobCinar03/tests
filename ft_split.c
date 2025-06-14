@@ -78,11 +78,11 @@ static void	*free_split(char **split, int i, int word_count)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**split;
 	int	i;
 	int	word_count;
 	int	start;
 	int	end;
+	char	**split;
 
 	if (!s)
 		return (NULL);
