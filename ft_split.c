@@ -96,10 +96,7 @@ char	**ft_split(char const *s, char c)
 		end = count_end_find(s, c, i);
 		split[i] = ft_substr(s, start, end - start);
 		if (!split[i])
-		{
-			free_split(split, i - 1);
-			return (NULL);
-		}
+			free_split((split, i - 1), NULL);
 		i++;
 	}
 	split[i] = NULL;
