@@ -57,14 +57,16 @@ char	*ft_itoa(int n)
 		return (ft_strdup("0"));
 	sign = 0;
 	if (n < 0)
-	{
 		sign = 1;
+	if (n < 0)
 		n *= -1;
-	}
 	n2 = n;
 	len = 0;
-	while (n > 0 && len++)
+	while (n > 0)
+	{
 		n = n / 10;
+		len++;
+	}
 	result = (char *)malloc(sizeof(char) * (len + sign + 1));
 	if (!result)
 		return (NULL);
