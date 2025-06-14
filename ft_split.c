@@ -65,14 +65,15 @@ static int	count_end_find(const char *s, char c, int index_word)
 	return (i);
 }
 
-static void	free_split(char **split, int i)
+static void	*free_split(char **split, int i, int word_count)
 {
-	while (i >= 0)
+	while (i < 0)
 	{
 		free(split[i]);
-		i--;
+		i++;
 	}
 	free(split);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -81,7 +82,7 @@ char	**ft_split(char const *s, char c)
 	int		word_count;
 	int		start;
 	int		end;
-	char	**split;
+	char		**split;
 
 	if (!s)
 		return (NULL);
@@ -96,7 +97,7 @@ char	**ft_split(char const *s, char c)
 		end = count_end_find(s, c, i);
 		split[i] = ft_substr(s, start, end - start);
 		if (!split[i])
-			return (free_split(split, i - 1), NULL);
+			return (free_split(split, i, word_count));
 		i++;
 	}
 	split[i] = NULL;
