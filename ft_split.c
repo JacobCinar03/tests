@@ -67,7 +67,7 @@ static int	count_end_find(const char *s, char c, int index_word)
 
 static void	*free_split(char **split, int i, int word_count)
 {
-	while (i < 0)
+	while (i < word_count)
 	{
 		free(split[i]);
 		i++;
