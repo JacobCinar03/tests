@@ -6,25 +6,17 @@
 /*   By: ycinarog <ycinarog@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:52:50 by ycinarog          #+#    #+#             */
-/*   Updated: 2025/06/14 20:00:45 by ycinarog         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:26:56 by ycinarog         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ycinarog <ycinarog@student.42istanbul.c    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 15:52:50 by ycinarog          #+#    #+#             */
-/*   Updated: 2025/06/15 15:53:25 by ycinarog         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libft.h"
+static void	*clear_control(t_list **new_lst, void (*del)(void *))
+{
+	ft_lstclear(new_lst, del);
+	return (NULL);
+}
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -39,15 +31,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		n_content = f(lst->content);
 		if (!n_content)
-			ft_lstclear(&new_lst, del);
-		if (!n_content)
-			return (NULL);
+			return(clear_control(&new_lst, del));
 		new_o = ft_lstnew(n_content);
 		if (!new_o)
 		{
 			del(n_content);
-			ft_lstclear(&new_lst, del);
-			return (NULL);
+			return(clear_control(&new_lst, del));
 		}
 		ft_lstadd_back(&new_lst, new_o);
 		lst = lst->next;
